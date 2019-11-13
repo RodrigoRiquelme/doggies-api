@@ -2,6 +2,7 @@ package cl.gamelena.doggies.domain.usecase.impl;
 
 import cl.gamelena.doggies.data.entity.doggy.DoggiesList;
 import cl.gamelena.doggies.data.entity.doggy.DoggyImages;
+import cl.gamelena.doggies.domain.exception.DoggyNotFoundException;
 import cl.gamelena.doggies.domain.model.BreedModel;
 import cl.gamelena.doggies.domain.repository.DoggiesRepository;
 import cl.gamelena.doggies.domain.usecase.BreedsUseCase;
@@ -26,10 +27,14 @@ public class BreedsUseCaseImpl implements BreedsUseCase {
         List<String> subBreeds = doggiesList.getMessage().get(breedName);
         List<String> images = doggyImages.getMessage();
 
+        if (!subBreedsExists(subBreeds)) {
+            throw new DoggyNotFoundException();
+        }
+
         return BreedModel
             .builder()
                 .breed(
-                   subBreedsExists(subBreeds) ? capitalize(breedName) : null
+                   capitalize(breedName)
                 )
                 .subBreeds(subBreeds)
                 .images(images)
@@ -39,4 +44,5 @@ public class BreedsUseCaseImpl implements BreedsUseCase {
     private Boolean subBreedsExists(List<String> subBreeds) {
         return subBreeds != null;
     }
+
 }
