@@ -16,7 +16,6 @@ public class DoggiesController {
 
     @GetMapping(value = "/breed/{breedName}")
     public BreedModel getBreed(@PathVariable(value = "breedName") String breedName) {
-
-        return BreedModel.builder().breed("WOOF").build();
+        return useCase.getBreed(breedName);
     }
 }
