@@ -16,6 +16,7 @@ import static org.springframework.util.StringUtils.capitalize;
 
 @Service
 public class BreedsUseCaseImpl implements BreedsUseCase {
+
     @Autowired
     private DoggiesRepository repository;
 
@@ -44,5 +45,4 @@ public class BreedsUseCaseImpl implements BreedsUseCase {
     private Boolean subBreedsExists(List<String> subBreeds) {
         return subBreeds != null;
     }
-
 }

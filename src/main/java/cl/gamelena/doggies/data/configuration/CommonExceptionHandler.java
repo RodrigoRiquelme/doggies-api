@@ -11,15 +11,20 @@ import org.springframework.web.client.ResourceAccessException;
 
 @RestControllerAdvice
 public class CommonExceptionHandler {
-    @ExceptionHandler(value = {ResourceAccessException.class, HttpClientErrorException.class, DoggyNotFoundException.class})
-    public ResponseEntity<?> handler(RuntimeException ex) {
+    @ExceptionHandler(value = {ResourceAccessException.class, DoggyNotFoundException.class})
+    public ResponseEntity<BreedModel> handler(RuntimeException ex) {
         BreedModel model = BreedModel.builder().build();
         return new ResponseEntity<>(model, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(value = {HttpClientErrorException.class})
+    public ResponseEntity<BreedModel> handler(HttpClientErrorException ex) {
+        BreedModel model = BreedModel.builder().build();
+        return new ResponseEntity<>(model, ex.getStatusCode());
+    }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<?> handler(Exception ex) {
+    public ResponseEntity<BreedModel> handler(Exception ex) {
         BreedModel model = BreedModel.builder().build();
         return new ResponseEntity<>(model, HttpStatus.INTERNAL_SERVER_ERROR);
     }

@@ -23,7 +23,13 @@ public class DoggiesRepositoryImpl implements DoggiesRepository {
 
     @Override
     public DoggiesList getDoggiesList() {
-        return restTemplate.getForObject(listAllUrl, DoggiesList.class);
+        ResponseEntity<DoggiesList> response = restTemplate.exchange(
+            listAllUrl,
+            HttpMethod.GET,
+            httpEntity(),
+            DoggiesList.class
+        );
+        return response.getBody();
     }
 
     @Override

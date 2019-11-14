@@ -19,6 +19,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+import static cl.gamelena.doggies.data.entity.doggy.DoggiesListStub.doggiesList;
+import static cl.gamelena.doggies.data.entity.doggy.DoggyImagesStub.doggyImages;
 import static junit.framework.TestCase.assertNotNull;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
@@ -36,28 +38,10 @@ class BreedsUseCaseImplTest {
 
     private void setUpRepository() {
         when(repository.getDoggiesList()).thenReturn(
-            DoggiesList.builder()
-                .message(
-                    new HashMap<String, List<String>>() {{
-                        put("akita", new ArrayList<>());
-                        put("akitoy", new ArrayList<>(
-                            Arrays.asList("one", "two", "three")
-                        ));
-                    }}
-                )
-                .status(SUCCESS)
-                .build()
+            doggiesList()
         );
         when(repository.getDoggyImages(anyString())).thenReturn(
-            DoggyImages.builder()
-                .message(new ArrayList<>(
-                    Arrays.asList(
-                        "one.jpg",
-                        "two.jpg"
-                    )
-                ))
-                .status(SUCCESS)
-                .build()
+            doggyImages()
         );
     }
 
@@ -72,7 +56,7 @@ class BreedsUseCaseImplTest {
     void getBreedWhenNotFound() {
         setUpRepository();
         Assertions.assertThrows(DoggyNotFoundException.class, () -> {
-            BreedModel result = useCase.getBreed("akinotoy");
+            useCase.getBreed("akinotoy");
         });
     }
 }
