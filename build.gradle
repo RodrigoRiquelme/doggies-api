@@ -40,6 +40,16 @@ jacocoTestReport {
     }
 }
 
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            excludes = [
+                "src/main/java/cl/gamelena/doggies/DoggiesApplication.java",
+            ]
+        }
+    }
+}
+
 test {
     useJUnitPlatform()
 }
