@@ -10,7 +10,7 @@ Doggies Api Client for https://dog.ceo/dog-api/
 - Doggies Config Server microservice - https://github.com/RodrigoRiquelme/doggies-config-server
 
 Deploy
-- Clone and Deploy Doggies Config Server with
+- Clone and Deploy Doggies Config Server
 ```
 git clone https://github.com/RodrigoRiquelme/doggies-config-server.git
 cd doggies-config-server
