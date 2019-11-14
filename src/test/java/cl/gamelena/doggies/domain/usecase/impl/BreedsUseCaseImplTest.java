@@ -48,7 +48,7 @@ class BreedsUseCaseImplTest {
     @Test
     void getBreedWhenSuccessfulReturnsBreedModel() {
         setUpRepository();
-        BreedModel result = useCase.getBreed("akitoy");
+        BreedModel result = useCase.getBreed("akita");
         assertNotNull(result);
     }
 
@@ -56,7 +56,7 @@ class BreedsUseCaseImplTest {
     void getBreedWhenNotFound() {
         setUpRepository();
         Assertions.assertThrows(DoggyNotFoundException.class, () -> {
-            useCase.getBreed("akinotoy");
+            useCase.getBreed("akinota");
         });
     }
 }
