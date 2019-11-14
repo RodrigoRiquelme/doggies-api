@@ -3,7 +3,7 @@
 Doggies Api Client for https://dog.ceo/dog-api/
 
 [![Build Status](https://travis-ci.org/RodrigoRiquelme/doggies-api.svg?branch=master)](https://travis-ci.org/RodrigoRiquelme/doggies-api)
-
+[![codecov](https://codecov.io/gh/RodrigoRiquelme/doggies-api/branch/master/graph/badge.svg)](https://codecov.io/gh/RodrigoRiquelme/doggies-api)
 ### Requirements
 - Java 8 - https://www.java.com/es/download/
 - Gradle - https://gradle.org/
