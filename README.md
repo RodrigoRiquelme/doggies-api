@@ -27,7 +27,7 @@ cd doggies-api
 ./gradlew bootRun
 ```
 
-- Browse to `http://localhost:8080/doggies/breed/hound`, notice that the las part of URL is variable, for more information about available doggies check the Dog CEO API `https://dog.ceo/api/breeds/list/all` 
+Browse to `http://localhost:8080/doggies/breed/hound`, notice that the `hound` in this URL is variable, for more information about available doggies check the Dog CEO API `https://dog.ceo/api/breeds/list/all` 
 
 
 
