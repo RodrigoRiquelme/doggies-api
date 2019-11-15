@@ -48,8 +48,7 @@ jacocoTestReport {
             fileTree(dir: it,
                 exclude: [
                     '**cl/gamelena/doggies/DoggiesApplication**',
-                    '*#equals(*)',
-                    '*#toString(*)'
+                    '**cl/gamelena/doggies/data/configuration/RestTemplateFactory**'
                 ]
             )
         })
