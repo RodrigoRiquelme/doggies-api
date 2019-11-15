@@ -30,3 +30,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### if Doggies Config Server was cloned incorrectly, shit happens
+doggies-config-server/

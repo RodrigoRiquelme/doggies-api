@@ -17,6 +17,11 @@ cd doggies-config-server
 ./gradlew build
 ./gradlew bootRun
 ```
+OR execute this shell script
+```
+./bin/start_config_server.sh 
+
+```
 
 
 - Deploy this app
