@@ -19,7 +19,7 @@ cd doggies-config-server
 ```
 OR execute this shell script
 ```
-./bin/start_config_server.sh 
+./bin/1.start_config_server.sh 
 
 ```
 

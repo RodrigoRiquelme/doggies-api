@@ -1,0 +1,1 @@
+./gradlew build bootRun & open http://localhost:8080/doggies/breed/hound
