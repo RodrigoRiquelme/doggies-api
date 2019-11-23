@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class BreedModelStub {
     public static BreedModel breedModel() {
         return BreedModel.builder()
-            .breed("Hound")
+            .breed("Akita")
             .images(new ArrayList<>(
                 Arrays.asList(
                     "image1.jpg",
@@ -20,6 +20,13 @@ public class BreedModelStub {
                 )
             ))
             .build();
+    }
+
+    public static BreedModel emptyBreedModel() {
+        return BreedModel.builder()
+            .breed("Akinota")
+            .build();
+
     }
 
 }

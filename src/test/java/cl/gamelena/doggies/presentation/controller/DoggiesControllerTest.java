@@ -70,7 +70,7 @@ class DoggiesControllerTest {
         );
 
         performMockMvc()
-                .andExpect(status().isServiceUnavailable());
+            .andExpect(status().isServiceUnavailable());
     }
 
     private ResultActions performMockMvc() throws Exception {

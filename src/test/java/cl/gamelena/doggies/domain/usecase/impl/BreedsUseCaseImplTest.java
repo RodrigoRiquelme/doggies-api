@@ -1,27 +1,23 @@
 package cl.gamelena.doggies.domain.usecase.impl;
 
-import cl.gamelena.doggies.data.entity.doggy.DoggiesList;
-import cl.gamelena.doggies.data.entity.doggy.DoggyImages;
-import cl.gamelena.doggies.data.repository.DoggiesRepositoryImpl;
+import cl.gamelena.doggies.data.entity.doggy.DoggiesListImages;
 import cl.gamelena.doggies.domain.exception.DoggyNotFoundException;
 import cl.gamelena.doggies.domain.model.BreedModel;
 import cl.gamelena.doggies.domain.repository.DoggiesRepository;
-import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import org.springframework.core.convert.converter.Converter;
 
 import static cl.gamelena.doggies.data.entity.doggy.DoggiesListStub.doggiesList;
 import static cl.gamelena.doggies.data.entity.doggy.DoggyImagesStub.doggyImages;
+import static cl.gamelena.doggies.domain.model.BreedModelStub.breedModel;
+import static cl.gamelena.doggies.domain.model.BreedModelStub.emptyBreedModel;
 import static junit.framework.TestCase.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -29,10 +25,13 @@ import static org.mockito.Mockito.when;
 class BreedsUseCaseImplTest {
 
     @InjectMocks
-    private BreedsUseCaseImpl useCase = new BreedsUseCaseImpl();
+    private BreedsUseCaseImpl useCase;
 
     @Mock
-    private DoggiesRepository repository = new DoggiesRepositoryImpl();
+    private DoggiesRepository repository;
+
+    @Mock
+    private Converter<DoggiesListImages, BreedModel> mapper;
 
     private final static String SUCCESS = "success";
 
@@ -48,6 +47,9 @@ class BreedsUseCaseImplTest {
     @Test
     void getBreedWhenSuccessfulReturnsBreedModel() {
         setUpRepository();
+        when(mapper.convert(any(DoggiesListImages.class))).thenReturn(
+            breedModel()
+        );
         BreedModel result = useCase.getBreed("akita");
         assertNotNull(result);
     }
@@ -55,6 +57,9 @@ class BreedsUseCaseImplTest {
     @Test
     void getBreedWhenNotFound() {
         setUpRepository();
+        when(mapper.convert(any(DoggiesListImages.class))).thenReturn(
+            emptyBreedModel()
+        );
         Assertions.assertThrows(DoggyNotFoundException.class, () -> {
             useCase.getBreed("akinota");
         });
